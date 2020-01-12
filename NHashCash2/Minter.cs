@@ -12,7 +12,7 @@ namespace NHashCash2
 			"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/="
 			);
 
-		private Random _numberGenerator = new Random();
+		private RandomNumberGenerator _numberGenerator = RandomNumberGenerator.Create();
 
 		/// <summary>
 		///	Makes sure that the stamp format is either 0 or 1, just in case we
