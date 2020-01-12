@@ -223,7 +223,7 @@ namespace NHashCash2
 		/// <param name="format">The format of the stamp.</param>
 		/// <param name="prefixLength">The length of the stamp prefix after all its elements have been pieced together.</param>
 		/// <returns>A byte array containing the stamp prefix and the required amount of padding.</returns>
-		private byte[] CreateBlankStamp(string resource, int requiredDenomination, DateTime date, StampFormat format, out int prefixLength)
+		private byte[] CreateBlankStamp(string resource, int requiredDenomination, DateTimeOffset date, StampFormat format, out int prefixLength)
 		{
 			byte[] stampPrefixBytes = GenerateStampPrefixBytes(resource, requiredDenomination, date, format);
 			prefixLength = stampPrefixBytes.Length;
@@ -244,7 +244,7 @@ namespace NHashCash2
 		/// <param name="date">The date that the stamp is to be minted for.</param>
 		/// <param name="format">The format of the stamp to be produced.</param>
 		/// <returns>A byte array containing the stamp prefix.</returns>
-		private byte[] GenerateStampPrefixBytes(string resource, int requiredDenomination, DateTime date, StampFormat format)
+		private byte[] GenerateStampPrefixBytes(string resource, int requiredDenomination, DateTimeOffset date, StampFormat format)
 		{
 			string stampPrefix = null;
 			string stampDate = date.ToString("yymmdd");
@@ -310,7 +310,7 @@ namespace NHashCash2
 		/// <returns>A string representation of the hashcash stamp.</returns>
 		public string Mint(string resource)
 		{
-			return Mint(resource, DefaultDenomination, DateTime.Now, DefaultFormat);
+			return Mint(resource, DefaultDenomination, DateTimeOffset.UtcNow, DefaultFormat);
 		}
 
 		/// <summary>
@@ -321,7 +321,7 @@ namespace NHashCash2
 		/// <returns>A string representation of the hashcash stamp.</returns>
 		public string Mint(string resource, int requiredDenomination)
 		{
-			return Mint(resource, requiredDenomination, DateTime.Now, DefaultFormat);
+			return Mint(resource, requiredDenomination, DateTimeOffset.UtcNow, DefaultFormat);
 		}
 
 		/// <summary>
@@ -330,7 +330,7 @@ namespace NHashCash2
 		/// <param name="resource">The resource that the stamp is to be minted for.</param>
 		/// <param name="date">The date that the stamp is to be minted for.</param>
 		/// <returns>A string representation of the hashcash stamp.</returns>
-		public string Mint(string resource, DateTime date)
+		public string Mint(string resource, DateTimeOffset date)
 		{
 			return Mint(resource, DefaultDenomination, date, DefaultFormat);
 		}
@@ -343,7 +343,7 @@ namespace NHashCash2
 		/// <returns>A string representation of the hashcash stamp.</returns>
 		public string Mint(string resource, StampFormat format)
 		{
-			return Mint(resource, DefaultDenomination, DateTime.Now, format);
+			return Mint(resource, DefaultDenomination, DateTimeOffset.UtcNow, format);
 		}
 
 		/// <summary>
@@ -353,7 +353,7 @@ namespace NHashCash2
 		/// <param name="date">The date that the stamp is to be minted for.</param>
 		/// <param name="format">The format of the stamp to be produced.</param>
 		/// <returns>A string representation of the hashcash stamp.</returns>
-		public string Mint(string resource, DateTime date, StampFormat format)
+		public string Mint(string resource, DateTimeOffset date, StampFormat format)
 		{
 			return Mint(resource, DefaultDenomination, date, format);
 		}
@@ -365,7 +365,7 @@ namespace NHashCash2
 		/// <param name="requiredDenomination">The required denomination of the stamp.</param>
 		/// <param name="date">The date that the stamp is to be minted for.</param>
 		/// <returns>A string representation of the hashcash stamp.</returns>
-		public string Mint(string resource, int requiredDenomination, DateTime date)
+		public string Mint(string resource, int requiredDenomination, DateTimeOffset date)
 		{
 			return Mint(resource, requiredDenomination, date, DefaultFormat);
 		}
@@ -379,7 +379,7 @@ namespace NHashCash2
 		/// <returns>A string representation of the hashcash stamp.</returns>
 		public string Mint(string resource, int requiredDenomination, StampFormat format)
 		{
-			return Mint(resource, requiredDenomination, DateTime.Now, format);
+			return Mint(resource, requiredDenomination, DateTimeOffset.UtcNow, format);
 		}
 
 		/// <summary>
@@ -390,7 +390,7 @@ namespace NHashCash2
 		/// <param name="date">The date that the stamp is to be minted for.</param>
 		/// <param name="format">The format of the stamp to be produced.</param>
 		/// <returns>A string representation of the hashcash stamp.</returns>
-		public string Mint(string resource, int requiredDenomination, DateTime date, StampFormat format)
+		public string Mint(string resource, int requiredDenomination, DateTimeOffset date, StampFormat format)
 		{
 			ValidateResource(resource);
 			ValidateRequiredDenomination(requiredDenomination);

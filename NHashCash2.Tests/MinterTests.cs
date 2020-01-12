@@ -11,7 +11,7 @@ namespace NHashCash2.Tests
 			Assert.Throws<ArgumentException>(() =>
 			{
 				Minter minter = new Minter();
-				string stamp = minter.Mint(string.Empty, 8, DateTime.Now, StampFormat.Version0);
+				string stamp = minter.Mint(string.Empty, 8, DateTimeOffset.UtcNow, StampFormat.Version0);
 			});
 		}
 
@@ -21,7 +21,7 @@ namespace NHashCash2.Tests
 			Assert.Throws<ArgumentOutOfRangeException>(() =>
 			{
 				Minter minter = new Minter();
-				string stamp = minter.Mint("http://notgartner.com", 8, DateTime.Now, StampFormat.Version0);
+				string stamp = minter.Mint("http://notgartner.com", 8, DateTimeOffset.UtcNow, StampFormat.Version0);
 			});
 		}
 
@@ -31,7 +31,7 @@ namespace NHashCash2.Tests
 			Assert.Throws<ArgumentOutOfRangeException>(() =>
 			{
 				Minter minter = new Minter();
-				string stamp = minter.Mint("foo0123456789", 0, DateTime.Now, StampFormat.Version0);
+				string stamp = minter.Mint("foo0123456789", 0, DateTimeOffset.UtcNow, StampFormat.Version0);
 			});
 		}
 
@@ -39,28 +39,28 @@ namespace NHashCash2.Tests
 		public void CheckMint16BitVersion0Stamp()
 		{
 			Minter minter = new Minter();
-			minter.Mint("foo0123456789", 16, DateTime.Now, StampFormat.Version0);
+			minter.Mint("foo0123456789", 16, DateTimeOffset.UtcNow, StampFormat.Version0);
 		}
 
 		[Fact]
 		public void CheckMint16BitVersion1Stamp()
 		{
 			Minter minter = new Minter();
-			minter.Mint("foo0123456789", 16, DateTime.Now, StampFormat.Version1);
+			minter.Mint("foo0123456789", 16, DateTimeOffset.UtcNow, StampFormat.Version1);
 		}
 
 		[Fact]
 		public void CheckMint20BitVersion0Stamp()
 		{
 			Minter minter = new Minter();
-			minter.Mint("foo0123456789", 20, DateTime.Now, StampFormat.Version0);
+			minter.Mint("foo0123456789", 20, DateTimeOffset.UtcNow, StampFormat.Version0);
 		}
 
 		[Fact]
 		public void CheckMint20BitVersion1Stamp()
 		{
 			Minter minter = new Minter();
-			minter.Mint("foo0123456789", 20, DateTime.Now, StampFormat.Version1);
+			minter.Mint("foo0123456789", 20, DateTimeOffset.UtcNow, StampFormat.Version1);
 		}
 	}
 }

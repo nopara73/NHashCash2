@@ -11,7 +11,7 @@ namespace NHashCash2.Sample
 			StampFormat format = (StampFormat)Enum.Parse(typeof(StampFormat), string.Format("Version{0}", args[2]));
 
 			Minter minter = new Minter();
-			string stamp = minter.Mint(resource, denomination, DateTime.Now, format);
+			string stamp = minter.Mint(resource, denomination, DateTimeOffset.UtcNow, format);
 			Console.WriteLine(stamp);
 
 			Console.WriteLine("Press a key to exit...");
