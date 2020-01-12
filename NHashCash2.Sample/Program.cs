@@ -8,7 +8,7 @@ namespace NHashCash2.Sample
 		{
 			string resource = args[0];
 			int denomination = int.Parse(args[1]);
-			StampFormat format = (StampFormat)Enum.Parse(typeof(StampFormat), string.Format("Version{0}", args[2]));
+			StampFormat format = (StampFormat)Enum.Parse(typeof(StampFormat), $"Version{args[2]}");
 
 			Minter minter = new Minter();
 			string stamp = minter.Mint(resource, denomination, DateTimeOffset.UtcNow, format);

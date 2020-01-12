@@ -8,9 +8,7 @@ namespace NHashCash2
 {
 	public class Minter
 	{
-		private byte[] _characterSet = Encoding.ASCII.GetBytes(
-			"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/="
-			);
+		private byte[] _characterSet = Encoding.ASCII.GetBytes("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=");
 
 		private RandomNumberGenerator _numberGenerator = RandomNumberGenerator.Create();
 
@@ -24,9 +22,7 @@ namespace NHashCash2
 		{
 			if ((format != StampFormat.Version0) && (format != StampFormat.Version1))
 			{
-				throw new NotSupportedException(
-					"Only version 0 and version 1 stamps are supported."
-					);
+				throw new NotSupportedException("Only version 0 and version 1 stamps are supported.");
 			}
 		}
 
@@ -252,20 +248,11 @@ namespace NHashCash2
 			switch (format)
 			{
 				case StampFormat.Version0:
-					stampPrefix = string.Format(
-						"0:{0}:{1}:",
-						stampDate,
-						resource
-						);
+					stampPrefix = $"0:{stampDate}:{resource}:";
 					break;
 
 				case StampFormat.Version1:
-					stampPrefix = string.Format(
-						"1:{0}:{1}:{2}::",
-						requiredDenomination,
-						stampDate,
-						resource
-						);
+					stampPrefix = $"1:{requiredDenomination}:{stampDate}:{resource}::";
 					break;
 			}
 
@@ -282,11 +269,7 @@ namespace NHashCash2
 		{
 			if ((requiredDenomination <= 0) || (requiredDenomination > MaximumDenomination) || (requiredDenomination < MinimumDenomination))
 			{
-				string message = string.Format(
-					"The required denomination must be between {0} and {1} inclusive.",
-					MinimumDenomination,
-					MaximumDenomination
-					);
+				string message = $"The required denomination must be between {MinimumDenomination} and {MaximumDenomination} inclusive.";
 				throw new ArgumentOutOfRangeException(nameof(requiredDenomination), requiredDenomination, message);
 			}
 		}
